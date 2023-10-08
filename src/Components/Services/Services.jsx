@@ -12,7 +12,7 @@ const Services = () => {
     []
   );
 
-  return <div>
+  return <div className="grid md:grid-cols-2  lg:grid-cols-3 gap-4 px-4 bg-teal-400">
 
      {services?.map(services => <ServiceCard key={services.id} services={services}></ServiceCard>)}
   </div>;

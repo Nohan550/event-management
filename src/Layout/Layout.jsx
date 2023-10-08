@@ -5,12 +5,13 @@ import Footer from "../Components/Footer/Footer";
 
 const Layout = () => {
     return (
-        <div className="bg-base-300">
-            <div className="max-w-[1400px] mx-auto">
+        <div className="bg-base-100">
+            <div className="max-w-[1500px] mx-auto">
             
             <Navbar></Navbar>
             
             <Outlet></Outlet>
+            
             <Footer></Footer>
         </div>
         </div>

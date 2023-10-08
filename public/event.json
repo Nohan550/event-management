@@ -1,42 +1,42 @@
 [
     {
       "id": "1",
-      "name": "GameXpo",
+      "title": "GameXpo",
       "image": "https://i.ibb.co/5M0Lbpq/glenn-carstens-peters-0woy-PEJQ7jc-unsplash.jpg",
       "price": "$2999",
       "description": "Experience the ultimate gaming extravaganza with GameXpo. Get access to the latest games, VR experiences, and meet your favorite gaming influencers."
     },
     {
       "id": "2",
-      "name": "Tech Innovate Summit",
+      "title": "Tech Innovate Summit",
       "image": "https://i.ibb.co/k3rqwvg/ales-nesetril-Im7l-Zjxe-Lhg-unsplash.jpg",
       "price": "$2499",
       "description": "Stay ahead in the tech world at the Tech Innovate Summit. Explore cutting-edge technologies and network with industry leaders."
     },
     {
       "id": "3",
-      "name": "VR World Tour",
+      "title": "VR World Tour",
       "image": "https://i.ibb.co/dLPsvgq/minh-pham-HI6gy-p-WBI-unsplash.jpg",
       "price": "$1799",
       "description": "Embark on a virtual reality adventure with VR World Tour. Visit immersive VR worlds and create unforgettable memories."
     },
     {
       "id": "4",
-      "name": "GameDev Masterclass",
+      "title": "GameDev Masterclass",
       "image": "https://i.ibb.co/34x9Z4S/arad-hg-4z-XTf3-Pi-CCk-unsplash.jpg",
       "price": "$1299",
       "description": "Learn the art of game development from experts at the GameDev Masterclass. Bring your gaming ideas to life."
     },
     {
       "id": "5",
-      "name": "E-Sports Championship",
+      "title": "E-Sports Championship",
       "image": "https://i.ibb.co/VSstckD/florian-olivo-Mf23-RF8x-Ar-Y-unsplash.jpg",
       "price": "$1999",
       "description": "Compete against the best at the E-Sports Championship. Win cash prizes and become a gaming legend."
     },
     {
       "id": "6",
-      "name": "Tech Showcase Expo",
+      "title": "Tech Showcase Expo",
       "image": "https://i.ibb.co/kX48J6W/alex-knight-2-EJCSULRw-C8-unsplash.jpg",
       "price": "$1499",
       "description": "Discover the latest tech innovations at the Tech Showcase Expo. Get hands-on experience with cutting-edge gadgets."

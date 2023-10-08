@@ -10,6 +10,7 @@ import './index.css'
 import ErrorPage from './ErrorPage';
 import Layout from './Layout/Layout';
 import Banner from './Components/Banner/Banner';
+import ServiceDetail from './Components/Services/ServiceDetail';
 
 
 const router = createBrowserRouter([
@@ -20,6 +21,20 @@ const router = createBrowserRouter([
     children:[{
       path:'/',
       element:<Banner></Banner>
+    },{
+      path:'/services/:id',
+      element:<ServiceDetail></ServiceDetail>,
+      loader:() =>fetch("/event.json") 
+    },
+    {
+      path:"/blog",
+
+    },
+    {
+      path:"/contact"
+    },
+    {
+      path:'/login'
     }
 ]
   },

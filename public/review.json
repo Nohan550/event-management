@@ -1,0 +1,24 @@
+[
+    {
+      "name": "Alice Johnson",
+      "rating": 5,
+      "review": "I hired G Tech for my program, and they exceeded my expectations! From start to finish, they were professional, organized, and attentive to every detail. The event went off without a hitch, and I couldn't be happier."
+    },
+    {
+      "name": "Bob Smith",
+      "rating": 4,
+      "review": "EventPlanners did a great job managing our company's annual event. They handled everything from logistics to games flawlessly. The only reason I'm not giving them 5 stars is that communication could have been slightly better."
+    },
+    {
+      "name": "Carol Davis",
+      "rating": 3,
+      "review": "I used G tech for my game competation, and it was okay. The event went well overall, but there were a few minor hiccups with the timeline. I expected a bit more attention to detail."
+    },
+    {
+      "name": "David Wilson",
+      "rating": 4.5,
+      "review": "Gtech truly lived up to their name! They transformed our product launch into a memorable experience. Their creativity and dedication made it a huge success. I highly recommend their services."
+    }
+   
+  ]
+  
