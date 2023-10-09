@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
-
+import logo from "/user.png"
 const Navbar = () => {
    
 
 
   const {user,logOut} =useContext(AuthContext);
-
+  console.log(user)
   const HandleLogOut = ()=>{
            logOut()
            .then()
@@ -66,8 +66,22 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{pages}</ul>
       </div>
-      <div className="navbar-end">
+      <div className="navbar-end space-x-20">
+      
+        {
+          user?
+          <div className="w-10 flex gap-3  items-center ">
+           <img className="rounded-full" src={user.photoURL ? user.photoURL: logo} alt="" />
+           <h1 className="text-lg font-semibold">{user.displayName ? user.displayName : "User"}</h1>
+        </div>
 
+          :
+            
+            <div className="w-10">
+        
+            </div>
+        }
+        
         {
           user ?
           <button onClick={HandleLogOut} className="px-4 py-3 rounded-lg text-xl font-normal bg-slate-600 text-teal-400">Logout</button>

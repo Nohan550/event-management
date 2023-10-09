@@ -1,30 +1,65 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { ToastContainer, toast } from 'react-toastify';
+import { FaEye,FaEyeSlash } from 'react-icons/fa';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
-
+   const[regError,setRegError] =useState('')
+   const[showPass,setShowPass] =useState(false)
   const {createUser} =useContext(AuthContext)
   const handleRegister = e =>{
         e.preventDefault()
-         const name =e.target.name.value;
+         
          const email =e.target.Email.value;
          const password =e.target.Password.value;
 
-        //  if(password.length <6){
-        //   console.log('password must be 6 characters or more')
-        //  }
-      createUser(email,password,name)
+
+         if(password.length <6){
+          setRegError("Password should be atleast 6 characters");
+          return;
+         }
+         else if(!/[A-Z]/.test(password)){
+                  setRegError("Password must contain one Uppercase");
+                  return;
+         }
+         else if(!/[!#$%&? "<<]/.test(password)){
+               setRegError("Password must contain one special character");
+                      return;
+         }
+
+
+
+           setRegError('')
+        
+      createUser(email,password)
        .then(result =>{
+        toast.success("Successfully Registered", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+      
+
          console.log(result.user)
        })
       .catch((error) => {
-       const errorCode = error.code;
+      
        const errorMessage = error.message;
-       console.log(errorCode,errorMessage) 
+       setRegError(errorMessage) 
        // ..
      })
+   
   }
+  
+    
+   
     return (
         <div className="hero min-h-[559px] bg-base-200">
         <div className="hero-content flex-col ">
@@ -34,12 +69,7 @@ const Register = () => {
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
              <form onSubmit={handleRegister} className="card-body">
-             <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Name</span>
-                </label>
-                <input type="text" placeholder="name" name="name" className="input input-bordered" required />
-              </div>
+          
 
               <div className="form-control">
                 <label className="label">
@@ -51,15 +81,27 @@ const Register = () => {
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
-                <input type="password" placeholder="password" name="Password" className="input input-bordered" required />
+                <input type={showPass? 'text' : 'password'} placeholder="password" name="Password" className="input input-bordered" required />
+                <span className="relative -top-8 left-52" onClick={()=> setShowPass(!showPass)}>{
+                  showPass ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>
+                }
+                </span>
                 <label className="label">
                   <p className="label-text-alt text-base">Already Registered? Please <Link className="link link-hover text-teal-600 font-semibold" to="/login">Login</Link></p>
                 </label>
               </div>
-              <div className="form-control mt-6">
+                     
+              {
+              regError && <p className="text-red-500">{regError}</p>
+            }
+
+              <div className="form-control">
                 <button className="btn btn-accent text-white">Register</button>
               </div>
             </form>
+
+            
+           <ToastContainer></ToastContainer>
           </div>
         </div>
       </div>

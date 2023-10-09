@@ -1,25 +1,64 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
-
-
+import { ToastContainer, toast } from 'react-toastify';
+import { FaEye,FaEyeSlash } from 'react-icons/fa';
+import 'react-toastify/dist/ReactToastify.css';
+import ggLogo from "/google.png"
 const Login = () => {
-   const {logIn} = useContext(AuthContext)
+   const {logIn,googleLogin} = useContext(AuthContext)
   const location = useLocation() ;
   const navigate = useNavigate() 
+  const[showPass,setShowPass] =useState(false)
+  const[logError,setLogerror]=useState('')
    const handleLogin = e =>{
     e.preventDefault()
     const email =e.target.Email.value;
     const password =e.target.Password.value;
+    setLogerror('')
     logIn(email,password)
     .then( result => {
-      console.log(result.user)
+
+      toast.success('Login Successful', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+
+     
+        console.log(result.user)
       navigate(location?.state ? location.state : "/") 
     })
     .catch( error => {
+      setLogerror(error.message)
       console.log(error.message)
     })
    }
+   const handleGoogle =()=>{
+    
+    googleLogin()
+    .then( result => {
+      toast.success('Login Successful', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+      console.log(result.user)
+    })
+    .catch( error =>{
+      console.log(error.message)
+    })
+  }
     return (
         <div className="hero min-h-[559px] bg-base-200">
         <div className="hero-content flex-col ">
@@ -36,19 +75,28 @@ const Login = () => {
                 <input type="email" placeholder="email" name="Email" className="input input-bordered" required />
               </div>
               <div className="form-control">
-                <label className="label">
+              <label className="label">
                   <span className="label-text">Password</span>
                 </label>
-                <input type="password" placeholder="password" name="Password" className="input input-bordered" required />
+                <input type={showPass? 'text' : 'password'} placeholder="password" name="Password" className="input input-bordered" required />
+                <span className="relative -top-8 left-48" onClick={()=> setShowPass(!showPass)}>{
+                  showPass ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>
+                }
+                </span>
+        
                 <label className="label">
                   <p  className="label-text-alt text-base">Don't have an acount? <Link className="link link-hover text-teal-500 font-semibold" to="/register">Register</Link></p>
                 </label>
               </div>
-              <div className="form-control mt-6">
+              {logError && <p className="text-red-500 w-52">{logError}</p>}
+              <div className="form-control ">
                 <button className="btn btn-accent text-white">Login</button>
               </div>
             </form>
+            <div onClick={handleGoogle} className="flex justify-center items-center mb-4 border rounded-3xl border-zinc-950 p-2  gap-2 w-52 mx-auto"> <img src={ggLogo} className="w-6" alt="" /> 
+            <h1>Login With Google</h1></div>
           </div>
+          <ToastContainer></ToastContainer>
         </div>
       </div>
     );
