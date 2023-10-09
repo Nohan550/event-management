@@ -92,7 +92,7 @@ const Register = () => {
               </div>
                      
               {
-              regError && <p className="text-red-500">{regError}</p>
+              regError && <p className="text-red-500 w-52">{regError}</p>
             }
 
               <div className="form-control">

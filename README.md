@@ -1,5 +1,5 @@
 Website Name:Event Management
-Live link :  https://652451d6da108e1fd0677198--splendid-queijadas-882722.netlify.app/
+Live link :  https://652453a276356e282504ca3f--splendid-queijadas-882722.netlify.app/
 
 
 # User can register and  login with own email and password
