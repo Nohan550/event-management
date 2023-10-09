@@ -13,11 +13,11 @@ const ServiceDetail = () => {
   }, [id, services]);
 
   console.log(service);
-   const{title,image}=service;
+   const{title,image,description}=service;
   return (
     <div>
       <div
-        className="hero min-h-screen"
+        className="hero min-h-[650px]"
         style={{
           backgroundImage:
             `url(${image})`,
@@ -28,7 +28,8 @@ const ServiceDetail = () => {
           <div className="max-w-md">
             <h1 className="mb-5 text-5xl font-bold">{title}</h1>
             <p className="mb-5">
-             
+              {description}
+               We provide customer friendly events.We will suggest you some extra activiity as well as give a plan of our team.
             </p>
           
           </div>

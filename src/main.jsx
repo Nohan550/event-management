@@ -11,6 +11,12 @@ import ErrorPage from './ErrorPage';
 import Layout from './Layout/Layout';
 import Banner from './Components/Banner/Banner';
 import ServiceDetail from './Components/Services/ServiceDetail';
+import Login from './Components/Login/Login';
+import Blogs from './Components/Blogs/Blogs';
+import Contact from './Components/Contact/Contact';
+import Register from './Components/Register/Register';
+import AuthProvider from './AuthProvider/AuthProvider';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 
 const router = createBrowserRouter([
@@ -23,18 +29,24 @@ const router = createBrowserRouter([
       element:<Banner></Banner>
     },{
       path:'/services/:id',
-      element:<ServiceDetail></ServiceDetail>,
+      element:<PrivateRoute><ServiceDetail></ServiceDetail></PrivateRoute>,
       loader:() =>fetch("/event.json") 
     },
     {
-      path:"/blog",
-
+      path:"/blogs",
+    element:<PrivateRoute><Blogs></Blogs></PrivateRoute>
     },
     {
-      path:"/contact"
+      path:"/contact",
+      element:<PrivateRoute><Contact></Contact></PrivateRoute>
     },
     {
-      path:'/login'
+      path:'/login',
+       element:<Login></Login>
+    },
+    {
+      path:"/register",
+      element:<Register></Register>
     }
 ]
   },
@@ -43,6 +55,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <AuthProvider>
     <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>,
 )

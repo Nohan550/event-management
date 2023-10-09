@@ -9,7 +9,7 @@ const Navbar = () => {
   }>Home</NavLink>
       </li>
       <li>
-        <NavLink to="/blog"   className={({ isActive, isPending }) =>
+        <NavLink to="/blogs"   className={({ isActive, isPending }) =>
     isPending ? "pending" : isActive ? "underline bg-teal-400 text-white text-base" : ""
   }>Blog</NavLink>
       </li>
